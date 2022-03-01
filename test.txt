@@ -1,0 +1,116 @@
+curl -X POST -H 'Authorization: Bearer APP_USR-7345574626617437-022821-610d4b7ce21c119bc610e77cfa8091f7-212581826' -H "Content-type: application/json" -d 
+'{
+   	"site_id":"MLA"
+}' 
+'https://api.mercadolibre.com/users/test_user'
+
+
+
+
+# Crear Token
+curl -X POST \
+-H 'accept: application/json' \
+-H 'content-type: application/x-www-form-urlencoded' \
+'https://api.mercadolibre.com/oauth/token' \
+-d 'grant_type=authorization_code' \
+-d 'client_id=6870666906192625' \
+-d 'client_secret=N8Yqm3jbpdPvMHetFDW2FNJLWzFLO09R' \
+-d 'code=TG-621d2ed9b8c3df001a3b95d1-212581826' \
+-d 'redirect_uri=https://chanceplay.xyz/'
+
+# TOKEN APP PRINCIPAL
+APP_USR-7345574626617437-022821-610d4b7ce21c119bc610e77cfa8091f7-212581826
+# REFRESH PRINCIPAL
+TG-621d4144b8c3df001a3bb801-212581826
+
+
+<!-- usuario test 1 -->
+{
+    "id": 1081981455,
+    "nickname": "TESTMDALG0VT",
+    "password": "qatest2949",
+    "site_status": "active",
+    "email": "test_user_38025674@testuser.com"
+}
+
+<!-- usuario test 2 -->
+{
+    "id": 1081985260,
+    "nickname": "TETE3069850",
+    "password": "qatest700",
+    "site_status": "active",
+    "email": "test_user_36712418@testuser.com"
+}
+
+<!-- APP TEST -->
+
+curl -X POST \
+-H 'accept: application/json' \
+-H 'content-type: application/x-www-form-urlencoded' \
+'https://api.mercadolibre.com/oauth/token' \
+-d 'grant_type=authorization_code' \
+-d 'client_id=2223042557909195' \
+-d 'client_secret=ccG704MccTgKJWbtxpBKCByXylX9W2yi' \
+-d 'code=TG-621d44dc7cf91b001b8d5304-1081981455' \
+-d 'redirect_uri=https://chanceplay.xyz/'
+
+
+<!-- Acces token test -->
+APP_USR-2223042557909195-022821-ab43e0886360e99a8216cb872d569b82-1081981455
+<!-- refresh test -->
+TG-621d4504d3c829001a9cddd9-1081981455
+
+
+<!-- PARA PUBLICAR UN PRODUCTO -->
+curl -X POST -H 'Authorization: Bearer APP_USR-2223042557909195-022821-ab43e0886360e99a8216cb872d569b82-1081981455' -d 
+{
+  "title":"Item de test - No Ofertar",
+  "category_id":"MLV1747",
+  "price":350,
+  "currency_id":"USD",
+  "available_quantity":10,
+  "buying_mode":"buy_it_now",
+  "condition":"new",
+  "listing_type_id":"gold_special",
+  "sale_terms":[
+     {
+        "id":"WARRANTY_TYPE",
+        "value_name":"Garantía del vendedor"
+     },
+     {
+        "id":"WARRANTY_TIME",
+        "value_name":"90 días"
+     }
+  ],
+  "pictures":[
+     {
+        "source":"http://mla-s2-p.mlstatic.com/968521-MLA20805195516_072016-O.jpg"
+     }
+  ],
+  "attributes":[
+     {
+        "id":"BRAND",
+        "value_name":"Marca del producto"
+     },
+     {
+        "id":"EAN",
+        "value_name":"7898095297749"
+     }
+  ]
+}
+https://api.mercadolibre.com/items
+
+
+<!-- DAR DESCRIPCION, SI YA TIENE MANDA UN BAD REQUEST -->
+curl -X POST -H 'Authorization: Bearer $ACCESS_TOKEN' -H "Content-Type: application/json" -d
+{
+   "plain_text":"Descripción con Texto Plano  \n"
+}
+https://api.mercadolibre.com/items/$ITEM_ID/description
+
+<!-- EDITAR DESCRIPCION -->
+curl -X PUT -H 'Authorization: Bearer $ACCESS_TOKEN' -H "Content-Type: application/json" -d
+{
+   "plain_text":"Los mejores Rayban Wayfarer. Test."
+}
+https://api.mercadolibre.com/items/$ITEM_ID/description?api_version=2
