@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import publicar
+from .views import Descripcion, jsonArmado, publicar
 
 
 urlpatterns = [
-    path('publicar/', publicar, name="publicar")
+    path('publicar/', publicar, name="publicar"),
+    path('describir/', jsonArmado, name="describir")
 ]
