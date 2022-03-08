@@ -96,3 +96,7 @@ def refreshToken():
     a = response.json()
     token = a["access_token"]
     return token
+
+
+def hola(request):
+    return HttpResponse("ok")
